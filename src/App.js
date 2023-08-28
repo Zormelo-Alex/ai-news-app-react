@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
@@ -7,12 +7,14 @@ const newApiKey = `1e59334392114f02b478215a2d6f4ae5`
 
 function App() {
 
+  const [articles, setArticles] = useState([]);
+  
   useEffect(()=>{
     alanBtn({
       key: alanKey,
-      onCommand: ({command})=>{
-        if(command == 'test'){
-          alert("yo!")
+      onCommand: ({command, articles})=>{
+        if(command == 'newNews'){
+          console.log(articles)
         }
       }
     })
